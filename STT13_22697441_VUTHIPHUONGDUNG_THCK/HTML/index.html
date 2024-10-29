@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        #modal {
+            width: 40vw;
+            height: fit-content;
+            position: absolute;
+            top: 30%;
+            left: 30%;
+            transform: translate(-50%, -505);
+        }
+        
+        .modal-title {
+            color: black;
+            font-weight: bold;
+            ;
+        }
+        
+        .nav {
+            background-color: rgb(207, 215, 221);
+        }
+        
+        h2 {
+            text-align: center;
+        }
+        
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header over-hidden d-flex ">
+        <img src="../img/HEADER.PNG" alt="" srcset="" style="width: 100%">
+    </div>
+    <ul class="nav">
+        <il class="nav-item nav-link">DANG NHAP</li>
+            <il class="nav-item nav-link" id="open">DANG KI</li>
+    </ul>
+    <h2>DANH SACH THAM GIA DOI ROBOT CON KHOA CNTT</h2>
+    <table class="table table-bordered" id="table">
+        <thead>
+            <th>STT</th>
+            <th>MA THANH VIEN</th>
+            <th>HO VA TEN</th>
+            <th>LOP</th>
+            <th>NGAY THAM GIA</th>
+            <th>DIEN THOAI</th>
+            <th>EMAIL</th>
+        </thead>
+        <tbody>
+            <td>1</td>
+            <td>K18-123456789</td>
+            <td>Vu Thi Phuong Dung</td>
+            <td>DHTMDT18C</td>
+            <td>01/10/2022</td>
+            <td>0933-089-143</td>
+            <td>pdung@iuh.edu.vn</td>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-3">
+            <h6>SVTH:______________</h6>
+        </div>
+        <div class="col-3">
+            <h6>Ma so sinh vien:______________</h6>
+        </div>
+        <div class="col-3">
+            <h6>Lop: DHTMDT18CTT:______________</h6>
+        </div>
+    </div>
+    <div class="modal-content p-2" id="modal" style="row-gap:10px;">
+        <div class="btn btn-close" id="close">&times;</div>
+        <div class="modal-title" style="text-align:center">THONG TIN CA NHAN</div>
+        <div class="row" style="padding-top:10px;">
+            <label class="col-3">MA THANH VIEN</label>
+            <div class="col-6">
+                <input type="text" name="" id="id" placeholder="K18-123456789">
+            </div>
+            <span class="col-3 er" id="er-id">*</span>
+        </div>
+        <div class="row">
+            <label class="col-3">HO VA TEN</label>
+            <div class="col-6">
+                <input type="text" name="" id="name" placeholder="Vu Thi Phuong Dung">
+            </div>
+            <span class="col-3 er" id="er-name">*</span>
+        </div>
+        <div class="row">
+            <label class="col-3">LOP</label>
+            <div class="col-6">
+                <input type="text" name="" id="lop" placeholder="DHTMDT18C">
+            </div>
+            <span class="col-3 er" id="er-lop">*</span>
+        </div>
+        <div class="row">
+            <label class="col-3">NGAY THAM GIA</label>
+            <div class="col-6">
+                <input type="text" name="" id="date" placeholder="01/10/2022">
+            </div>
+            <span class="col-3 er" id="er-date">*</span>
+        </div>
+        <div class="row">
+            <label class="col-3">DIEN THOAI</label>
+            <div class="col-6">
+                <input type="text" name="" id="tell" placeholder="0933-089-143">
+            </div>
+            <span class="col-3 er" id="er-tell">*</span>
+        </div>
+        <div class="row">
+            <label class="col-3">EMAIL</label>
+            <div class="col-6">
+                <input type="text" name="" id="email" placeholder="pdung@iuh.edu.vn">
+            </div>
+            <span class="col-3 er" id="er-email">*</span>
+        </div>
+        <div class="row">
+            <button class="btn btn-success col-12" type="submit" id="submit">Luu</button>
+        </div>
+    </div>
+</body>
+<script>
+    var modal = document.getElementById('modal');
+    const open = document.getElementById('open');
+    const close = document.getElementById('close');
+    open.addEventListener("click", function() {
+        modal.style.display = "block";
+    });
+    close.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+    //submit
+    var STT = 1;
+    var submit = document.getElementById("submit");
+    var table = document.getElementById("table");
+    submit.addEventListener("click", function() {
+        var id = document.getElementById("id").value;
+        var name = document.getElementById("name").value;
+        var lop = document.getElementById("lop").value;
+        var date = document.getElementById("date").value;
+        var tell = document.getElementById("tell").value;
+        var email = document.getElementById("email").value;
+        var erid = document.getElementById("er-id");
+        var ername = document.getElementById("er-name");
+        var erlop = document.getElementById("er-lop");
+        var erdate = document.getElementById("er-date");
+        var ertell = document.getElementById("er-tell");
+        var eremail = document.getElementById("er-email");
+        var regid = /^K16-d\{9}$/;
+        var regname = /^[A-Z][a-z]*([][A-Z][a-z]*)+$/;
+        var reglop = /^[A-Z0-9]{11}$/;
+        var regtell = /^0\d{3}-\d{3}-\d{3}$/;
+        var regemail = /^[a-zA-Z0-9._%+-]+@iuh\.edu\.vn$/;
+        if (id === "" || name === "" || lop === "" || tell === "" || email === "" || !(regid).test(id) || !(regname).test(name) || !(reglop).test(lop) || !(regtell).test(tell) || !(regemail).test(email)) {
+            alert("Hay nhap thong tin hoac kiem tra lai!");
+            if (id === "")
+                erid.innerText = "Hay nhap ma!";
+            else if (!(regid).test(id))
+                erid.innerText = "Ma khong hop le!";
+            else
+                erid.innerText = "";
+
+            if (name === "")
+                ername.innerText = "Hay nhap ten!";
+            else if (!(regname).test(name))
+                ername.innerText = "Ten khong hop le!";
+            else
+                ername.innerText = "";
+
+            if (lop === "")
+                erlop.innerText = "Hay nhap lop!";
+            else if (!(reglop).test(lop))
+                erlop.innerText = "Lop khong hop le!";
+            else
+                erlop.innerText = "";
+
+            if (tell === "")
+                ertell.innerText = "Hay nhap so dien thoai!";
+            else if (!(regtell).test(tell))
+                ertell.innerText = "So dien thoai khong hop le!";
+            else
+                ertell.innerText = "";
+
+            if (email === "")
+                eremail.innerText = "Hay nhap email!";
+            else if (!(regemail).test(email))
+                eremail.innerText = "Email khong hop le!";
+            else
+                eremail.innerText = "";
+        } else {
+            STT++;
+            let html = `
+        <tr>
+            <td>${STT}</td>
+            <td>${id}</td>
+            <td>${name}</td>
+            <td>${lop}</td>
+            <td>${date}</td>
+            <td>${tell}</td>
+            <td>${email}</td>
+        </tr>
+        `;
+            let row = table.insertRow();
+            row.innerHTML = html;
+            modal.style.display = "none";
+            document.getElementById("id").value = "";
+            document.getElementById("name").value = "";
+            document.getElementById("lop").value = "";
+            document.getElementById("date").value = "";
+            document.getElementById("tell").value = "";
+            document.getElementById("email").value = "";
+        }
+    })
+</script>
+
+</html>
